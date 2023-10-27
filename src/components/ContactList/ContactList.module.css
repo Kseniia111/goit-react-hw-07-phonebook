@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 0;
+}
+
+.contactItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 7px;
+  margin-top: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #8ba793;
+}
