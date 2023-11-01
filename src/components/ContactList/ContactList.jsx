@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactList.module.css';
-import { deleteContact } from 'redux/ContactsSlice';
+import deleteContact from 'redux/contacts/contactsSlice';
 import { selectContacts, selectFilter } from 'redux/Selectors';
 
 const getVisibleTasks = (contacts, filter) => {

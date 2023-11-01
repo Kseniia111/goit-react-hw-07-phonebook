@@ -10,7 +10,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
-import { contacts } from './ContactsSlice';
+import contacts from './contacts/contactsSlice';
 import { filter } from './FilterSlice';
 import { combineReducers } from 'redux';
 
