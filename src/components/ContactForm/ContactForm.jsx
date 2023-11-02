@@ -4,6 +4,7 @@ import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsOperations';
 import { selectContacts } from 'redux/selectors';
+import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -14,16 +15,19 @@ export const ContactForm = () => {
     const form = e.target;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-
-    const isDuplicate = contacts.some(
-      contact => contact.text.name.toLowerCase() === name.toLowerCase()
-    );
-    if (isDuplicate) {
-      alert(`${name} is already in contacts`);
-    } else {
-      dispatch(addContact({ name, number }));
-      form.reset();
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      return toast.warn(`${name} is alredy in contacts.`);
     }
+
+    dispatch(addContact({ name, number }));
+
+    toast.success(`${name} is added to the contact list!`);
+
+    form.reset();
   };
 
   const nameInputId = nanoid();
