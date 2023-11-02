@@ -1,16 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'redux/FilterSlice';
-import { selectFilter } from 'redux/Selectors';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
 import css from './Filter.module.css';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
 
-  const handleFilterChange = filter => dispatch(setFilter(filter));
-  const changeFilter = e => {
-    handleFilterChange(e.currentTarget.value);
-    console.log(filter);
+  const handleFilterChange = e => {
+    dispatch(setFilter(e.currentTarget.value));
   };
 
   return (
@@ -20,8 +16,8 @@ const Filter = () => {
         <input
           className={css.formInput}
           type="text"
-          value={filter}
-          onChange={changeFilter}
+          name="filter"
+          onChange={handleFilterChange}
         />
       </label>
     </div>
