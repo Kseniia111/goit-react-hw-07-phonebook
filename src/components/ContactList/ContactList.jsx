@@ -1,49 +1,55 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactList.module.css';
-import { removeContact } from 'redux/contactsOperations';
-import { selectContacts, selectFilter } from 'redux/selectors';
+import { deleteContact } from 'redux/contactsOperations';
+import { selectContacts } from 'redux/selectors';
 
-const Items = () => {
+export function ContactList() {
   const contacts = useSelector(selectContacts);
-
-  const filterValue = useSelector(selectFilter).toLowerCase();
-
-  const getVisibleContacts = () => {
-    if (!filterValue || filterValue === '') {
-      return contacts;
-    }
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filterValue)
-    );
-  };
-
-  const visibleContacts = getVisibleContacts();
 
   const dispatch = useDispatch();
 
+  // const handleDelete = event => {
+  //   dispatch(deleteContact(event.currentTarget.id));
+  const handleDelete = event => {
+    const deletingContactId = event.target.id;
+    dispatch(deleteContact(deletingContactId));
+
+    alert(`This contact is delited from your phonebook!`);
+  };
+
   return (
     <ul className={css.list}>
-      {visibleContacts.length ? (
-        visibleContacts.map(({ id, text }) => (
-          <li className={css.contactItem} key={id}>
-            <span className={css.contactName}>{text.name}:</span>
-            <span className={css.contactNumber}>{text.number}</span>
-            <button
-              className={css.button}
-              type="button"
-              onClick={() => dispatch(removeContact(id))}
-            >
-              Delete
-            </button>
-          </li>
-        ))
-      ) : (
-        <h3>There are no contacts in your book</h3>
-      )}
+      {contacts.map(contact => (
+        <li className={css.contactItem} key={contact.id}>
+          <span className={css.contactName}>{contact.name}:</span>
+          <span className={css.contactNumber}>{contact.phone}</span>
+
+          <button className={css.button} type="button" onClick={handleDelete}>
+            Delete
+          </button>
+        </li>
+      ))}
     </ul>
   );
-};
+}
 
-export default Items;
+// const Items = () => {
+//   const contacts = useSelector(selectContacts);
+
+//   const filterValue = useSelector(selectFilter).toLowerCase();
+
+//   const getVisibleContacts = () => {
+//     if (!filterValue || filterValue === '') {
+//       return contacts;
+//     }
+
+//     return contacts.filter(contact =>
+//       contact.name.toLowerCase().includes(filterValue)
+//     );
+//   };
+
+//   const visibleContacts = getVisibleContacts();
+
+//   const dispatch = useDispatch();
+// export default Items;
