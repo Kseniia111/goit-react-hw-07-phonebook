@@ -1,10 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { filterContact } from 'redux/filterSlice';
-//import { selectFilter } from 'redux/selectors';
 import css from './Filter.module.css';
 
 const Filter = () => {
-  //const value = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const onChange = event => {
@@ -21,7 +19,6 @@ const Filter = () => {
           className={css.formInput}
           type="text"
           name="filter"
-          //value={value}
           onChange={onChange}
         />
       </label>
