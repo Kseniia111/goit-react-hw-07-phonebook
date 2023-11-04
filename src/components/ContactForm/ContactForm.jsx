@@ -18,17 +18,17 @@ export const ContactForm = () => {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name.value;
-    const number = form.elements.number.value;
+    const phone = form.elements.phone.value;
 
     const nameExist = contacts.find(contact => contact.name === name);
-    const numberExist = contacts.find(contact => contact.number === number);
+    const numberExist = contacts.find(contact => contact.phone === phone);
 
     if (nameExist) {
       alert(`${name} is already in contacts`);
     } else if (numberExist) {
-      alert(`This number ${number} is already in contacts`);
+      alert(`This number ${phone} is already in contacts`);
     } else {
-      const contact = { name, number };
+      const contact = { name, phone };
       dispatch(addContact(contact));
       form.reset();
     }

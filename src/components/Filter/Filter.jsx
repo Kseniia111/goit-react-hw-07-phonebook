@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { changeFilter } from 'redux/filterSlice';
+import { filterContact } from 'redux/filterSlice';
 //import { selectFilter } from 'redux/selectors';
 import css from './Filter.module.css';
 
@@ -10,7 +10,7 @@ const Filter = () => {
   const onChange = event => {
     const normalizedValue = event.target.value.toLowerCase();
 
-    dispatch(changeFilter(normalizedValue));
+    dispatch(filterContact(normalizedValue));
   };
 
   return (
