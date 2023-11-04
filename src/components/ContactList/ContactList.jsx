@@ -9,23 +9,16 @@ export function ContactList() {
 
   const dispatch = useDispatch();
 
-  // const handleDelete = event => {
-  //   dispatch(deleteContact(event.currentTarget.id));
-  const handleDelete = event => {
-    const deletingContactId = event.target.id;
-    dispatch(deleteContact(deletingContactId));
-
-    alert(`This contact is delited from your phonebook!`);
-  };
-
   return (
     <ul className={css.list}>
       {contacts.map(contact => (
         <li className={css.contactItem} key={contact.id}>
-          {/* <span className={css.contactName}>{contact.name}:</span>
-          <span className={css.contactNumber}>{contact.phone}</span> */}
           {contact.name}: {contact.phone}
-          <button className={css.button} type="button" onClick={handleDelete}>
+          <button
+            className={css.button}
+            type="button"
+            onClick={() => dispatch(deleteContact(contact.id))}
+          >
             Delete
           </button>
         </li>

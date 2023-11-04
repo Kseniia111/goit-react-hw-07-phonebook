@@ -18,17 +18,17 @@ export const ContactForm = () => {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name.value;
-    const phone = form.elements.phone.value;
+    const number = form.elements.number.value;
 
     const nameExist = contacts.find(contact => contact.name === name);
-    const numberExist = contacts.find(contact => contact.phone === phone);
+    const numberExist = contacts.find(contact => contact.number === number);
 
     if (nameExist) {
       alert(`${name} is already in contacts`);
     } else if (numberExist) {
-      alert(`This number ${phone} is already in contacts`);
+      alert(`This number ${number} is already in contacts`);
     } else {
-      const contact = { name, phone };
+      const contact = { name, number };
       dispatch(addContact(contact));
       form.reset();
     }
@@ -45,13 +45,13 @@ export const ContactForm = () => {
 
   //   const isInContacts = contacts.some(
   //     contact => contact.name.toLowerCase().trim() === name.toLowerCase().trim()
-  //   );
+  // );
 
-  //   // Перевіряє, чи існує контакт із таким самим ім'ям у списку контактів. Якщо контакт вже існує, виводиться попередження.
-  //   if (isInContacts) {
-  //     alert(`${name} is already in contacts`);
-  //     return;
-  //   }
+  // Перевіряє, чи існує контакт із таким самим ім'ям у списку контактів. Якщо контакт вже існує, виводиться попередження.
+  // if (isInContacts) {
+  //   alert(`${name} is already in contacts`);
+  //   return;
+  // }
 
   //   // Виклик функції onSubmit із батьківського компонента з передачею об'єкта контакту.
   //   dispatch(addContact({ name, number }));
