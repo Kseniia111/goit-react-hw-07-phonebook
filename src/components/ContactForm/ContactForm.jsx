@@ -4,7 +4,7 @@ import React from 'react';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsOperations';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/Selectors';
 
 // const nameInputId = nanoid();
 // const phoneInputId = nanoid();
